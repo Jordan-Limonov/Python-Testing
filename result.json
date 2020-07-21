@@ -1,0 +1,24 @@
+{
+    "start_date": {
+        "Year": "",
+        "Month": "",
+        "Day": "",
+        "Time": ""
+    },
+    "end_date": {
+        "End Year": "",
+        "End Month": "",
+        "End Day": "",
+        "End Time": ""
+    },
+    "media": {
+        "Media": "",
+        "Media Credit": "",
+        "Media Caption": "",
+        "Media Thumbnail": ""
+    },
+    "text": {
+        "Headline": "",
+        "Text": ""
+    }
+}
