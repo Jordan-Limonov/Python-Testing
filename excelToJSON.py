@@ -7,8 +7,8 @@ finalObj = {
 
 # Loading the headers
 # TODO: There's gotta be some way to optimize this, right?
-wb = load_workbook(filename = 'test.xlsx')
-sheet = wb['od1']
+wb = load_workbook(filename = 'mkesocialism_timeline.xlsx')
+sheet = wb['Sheet1']
 
 startDateHeaders = []
 for row in sheet.iter_rows(min_row=1, max_col=4, max_row=1):
@@ -91,6 +91,6 @@ for x in range(0, numEntries):
     finalObj["events"].append(tempObj)
 
 jsonObj = json.dumps(finalObj, indent=4)
-with open('result.json', 'w') as f:
+with open('socialism_result.json', 'w') as f:
     f.write(jsonObj)
 
