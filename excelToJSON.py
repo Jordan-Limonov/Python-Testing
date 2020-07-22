@@ -79,15 +79,14 @@ for x in range(0, numEntries):
     z=0
     mediaTempObj = {}
     for z in range(0, mediaData.__len__()):
-        if mediaData[z] is not None:
-            if mediaData[z] != '?' and mediaData[z] != 'n/a' and mediaData[z] != '' and mediaData[z] != ' ':
-                if mediaHeaders[z] == "url":
-                    mediaTempObj[mediaHeaders[z]] = "img/" + mediaData[z]
-                elif mediaHeaders[z] == "caption":
-                    if mediaData[z+2] != '?' and mediaData[z+2] != 'n/a' and mediaData[z+2] != '' and mediaData[z+2] != ' ':
-                        mediaTempObj[mediaHeaders[z]] = "<a href='" + mediaData[z] + "' target='_blank'>" + mediaData[z+2] + "</a>"
-                else:
-                    mediaTempObj[mediaHeaders[z]] = mediaData[z]
+        if mediaData[z] is not None and mediaData[z] != '?' and mediaData[z] != 'n/a' and mediaData[z] != '' and mediaData[z] != ' ' and mediaData[2] is not None and mediaData[2] != '?' and mediaData[2] != 'n/a' and mediaData[2] != '' and mediaData[2] != ' ':
+            if mediaHeaders[z] == "url":
+                mediaTempObj[mediaHeaders[z]] = "img/" + mediaData[z]
+            elif mediaHeaders[z] == "caption":
+                if mediaData[z+2] != '?' and mediaData[z+2] != 'n/a' and mediaData[z+2] != '' and mediaData[z+2] != ' ':
+                    mediaTempObj[mediaHeaders[z]] = "<a href='" + mediaData[z] + "' target='_blank'>" + mediaData[z+2] + "</a>"
+            else:
+                mediaTempObj[mediaHeaders[z]] = mediaData[z]
         else:
             mediaTempObj[mediaHeaders[z]] = ""
     
