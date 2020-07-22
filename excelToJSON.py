@@ -20,7 +20,7 @@ endDateHeaders = ["year", "month", "day", "hour", "minute", "second", "milliseco
 #     for cell in row:
 #         endDateHeaders.append(cell.value)
 
-mediaHeaders = ["thumb", "credit", "caption", "url"]
+mediaHeaders = ["caption", "credit", "thumb", "url"]
 # for row in sheet.iter_rows(min_row=1, min_col=12, max_col=15, max_row=1):
 #     for cell in row:
 #         mediaHeaders.append(cell.value)
