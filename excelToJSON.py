@@ -76,8 +76,10 @@ for x in range(0, numEntries):
     mediaTempObj = {}
     for x in range(0, mediaData.__len__()):
         if mediaData[x] is not None:
-            if(mediaHeaders[x] == "url"):
+            if mediaHeaders[x] == "url":
                 mediaTempObj[mediaHeaders[x]] = "img/" + mediaData[x]
+            elif mediaHeaders[x] == "caption":
+                mediaTempObj[mediaHeaders[x]] = "<a href='" + mediaData[x] + "'>" + mediaData[x+2] + "</a>"
             else:
                 mediaTempObj[mediaHeaders[x]] = mediaData[x]
         else:
