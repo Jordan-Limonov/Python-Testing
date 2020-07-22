@@ -79,7 +79,7 @@ for x in range(0, numEntries):
             if mediaHeaders[x] == "url":
                 mediaTempObj[mediaHeaders[x]] = "img/" + mediaData[x]
             elif mediaHeaders[x] == "caption":
-                mediaTempObj[mediaHeaders[x]] = "<a href='" + mediaData[x] + "'>" + mediaData[x+2] + "</a>"
+                mediaTempObj[mediaHeaders[x]] = "<a href='" + mediaData[x] + "' target='_blank'>" + mediaData[x+2] + "</a>"
             else:
                 mediaTempObj[mediaHeaders[x]] = mediaData[x]
         else:
