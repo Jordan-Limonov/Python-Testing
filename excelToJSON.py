@@ -44,14 +44,16 @@ for x in range(0, numEntries):
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, max_col=4):
         for cell in row:
             startDateData.append(cell.value)
-        for x in range(0, 3):
+        for y in range(0, 3):
             startDateData.append(None)
+        y=0
     endDateData = []
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, min_col=5, max_col=8):
         for cell in row:
             endDateData.append(cell.value)
-        for x in range(0, 3):
+        for y in range(0, 3):
             endDateData.append(None)
+        y=0
     mediaData = []
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, min_col=12, max_col=15):
         for cell in row:
@@ -62,34 +64,40 @@ for x in range(0, numEntries):
             textData.append(cell.value)
 
     startDateTempObj = {}
-    for x in range(0, startDateData.__len__()):
-        if startDateData[x] is not None:
-            startDateTempObj[startDateHeaders[x]] = startDateData[x]
+    for z in range(0, startDateData.__len__()):
+        if startDateData[z] is not None:
+            startDateTempObj[startDateHeaders[z]] = startDateData[z]
         else:
-            startDateTempObj[startDateHeaders[x]] = ""
+            startDateTempObj[startDateHeaders[z]] = ""
+    z=0
     endDateTempObj = {}
-    for x in range(0, endDateData.__len__()):
-        if endDateData[x] is not None:
-            endDateTempObj[endDateHeaders[x]] = endDateData[x]
+    for z in range(0, endDateData.__len__()):
+        if endDateData[z] is not None:
+            endDateTempObj[endDateHeaders[z]] = endDateData[z]
         else:
-            endDateTempObj[endDateHeaders[x]] = ""
+            endDateTempObj[endDateHeaders[z]] = ""
+    z=0
     mediaTempObj = {}
-    for x in range(0, mediaData.__len__()):
-        if mediaData[x] is not None:
-            if mediaHeaders[x] == "url":
-                mediaTempObj[mediaHeaders[x]] = "img/" + mediaData[x]
-            elif mediaHeaders[x] == "caption":
-                mediaTempObj[mediaHeaders[x]] = "<a href='" + mediaData[x] + "' target='_blank'>" + mediaData[x+2] + "</a>"
+    for z in range(0, mediaData.__len__()):
+        if mediaData[z] is not None:
+            if mediaHeaders[z] == "url":
+                mediaTempObj[mediaHeaders[z]] = "img/" + mediaData[z]
+            elif mediaHeaders[z] == "caption":
+                if mediaData[z] and mediaData[z+2] is not None:
+                    mediaTempObj[mediaHeaders[z]] = "<a href='" + mediaData[z] + "' target='_blank'>" + mediaData[z+2] + "</a>"
             else:
-                mediaTempObj[mediaHeaders[x]] = mediaData[x]
+                mediaTempObj[mediaHeaders[z]] = mediaData[z]
         else:
-            mediaTempObj[mediaHeaders[x]] = ""
+            mediaTempObj[mediaHeaders[z]] = ""
+    
+    z=0
     textTempObj = {}
-    for x in range(0, textData.__len__()):
-        if textData[x] is not None:
-            textTempObj[textHeaders[x]] = textData[x]
+    for z in range(0, textData.__len__()):
+        if textData[z] is not None:
+            textTempObj[textHeaders[z]] = textData[z]
         else:
-            textTempObj[textHeaders[x]] = ""
+            textTempObj[textHeaders[z]] = ""
+    z=0
 
     tempObj = {
         "start_date": startDateTempObj,
