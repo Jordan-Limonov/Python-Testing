@@ -31,22 +31,22 @@ for row in sheet.iter_rows(min_row=1, min_col=10, max_col=11, max_row=1):
 startDateObj = {}
 for header in startDateHeaders:
     startDateObj[header] = ""
-print(startDateObj)
+# print(startDateObj)
 
 endDateObj = {}
 for header in endDateHeaders:
     endDateObj[header] = ""
-print(endDateObj)
+# print(endDateObj)
 
 mediaObj = {}
 for header in mediaHeaders:
     mediaObj[header] = ""
-print(mediaObj)
+# print(mediaObj)
 
 textObj = {}
 for header in textHeaders:
     textObj[header] = ""
-print(textObj)
+# print(textObj)
 
 # Creating a final dictionary and converting it to JSON
 finalObj = {
@@ -58,8 +58,15 @@ finalObj = {
 # Could use this JSON object as a template, copying it for each entry into a temporary variable.
 # Everything is supposed to be in one file anyways, so that should work if I just add each entry into a dictionary once I'm done with it.
 jsonObj = json.dumps(finalObj, indent=4)
-print(jsonObj)
+# print(jsonObj)
 
 # Saving that JSON Object as a file
 with open('result.json', 'w') as f:
     f.write(jsonObj)
+
+# Let's iterate through everything
+# Reminder: You can just use 'is not None' for the equivalent of '!= null'
+for row in sheet.values:
+    for value in row:
+        if value is not None:
+            print(value)
