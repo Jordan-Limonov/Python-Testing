@@ -20,7 +20,7 @@ endDateHeaders = ["year", "month", "day", "hour", "minute", "second", "milliseco
 #     for cell in row:
 #         endDateHeaders.append(cell.value)
 
-mediaHeaders = ["url", "credit", "caption", "thumb"]
+mediaHeaders = ["thumb", "credit", "caption", "url"]
 # for row in sheet.iter_rows(min_row=1, min_col=12, max_col=15, max_row=1):
 #     for cell in row:
 #         mediaHeaders.append(cell.value)
@@ -76,7 +76,7 @@ for x in range(0, numEntries):
     mediaTempObj = {}
     for x in range(0, mediaData.__len__()):
         if mediaData[x] is not None:
-            if(mediaHeaders[x] == "thumb"):
+            if(mediaHeaders[x] == "url"):
                 mediaTempObj[mediaHeaders[x]] = "img/" + mediaData[x]
             else:
                 mediaTempObj[mediaHeaders[x]] = mediaData[x]
