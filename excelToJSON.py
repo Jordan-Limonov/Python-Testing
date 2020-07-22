@@ -35,7 +35,7 @@ for row in sheet.iter_cols(min_row=2, min_col=1, max_col=1):
     for cell in row:
         if cell.value is not None:
             numEntries += 1
-print(numEntries)
+print(str(numEntries) + " entries detected.")
 
 for x in range(0, numEntries):
     tempObj = {}
@@ -110,4 +110,5 @@ for x in range(0, numEntries):
 jsonObj = json.dumps(finalObj, indent=4)
 with open('socialism_result.json', 'w') as f:
     f.write(jsonObj)
+print("JSON file saved.")
 
