@@ -10,25 +10,25 @@ finalObj = {
 wb = load_workbook(filename = 'mkesocialism_timeline.xlsx')
 sheet = wb['Sheet1']
 
-startDateHeaders = []
-for row in sheet.iter_rows(min_row=1, max_col=4, max_row=1):
-    for cell in row:
-        startDateHeaders.append(cell.value)
+startDateHeaders = ["year", "month", "day", "hour", "minute", "second", "millisecond", "format"]
+# for row in sheet.iter_rows(min_row=1, max_col=4, max_row=1):
+#     for cell in row:
+#         startDateHeaders.append(cell.value)
 
-endDateHeaders = []
-for row in sheet.iter_rows(min_row=1, min_col=5, max_col=8, max_row=1):
-    for cell in row:
-        endDateHeaders.append(cell.value)
+endDateHeaders = ["year", "month", "day", "hour", "minute", "second", "millisecond", "format"]
+# for row in sheet.iter_rows(min_row=1, min_col=5, max_col=8, max_row=1):
+#     for cell in row:
+#         endDateHeaders.append(cell.value)
 
-mediaHeaders = []
-for row in sheet.iter_rows(min_row=1, min_col=12, max_col=15, max_row=1):
-    for cell in row:
-        mediaHeaders.append(cell.value)
+mediaHeaders = ["url", "credit", "caption", "thumb"]
+# for row in sheet.iter_rows(min_row=1, min_col=12, max_col=15, max_row=1):
+#     for cell in row:
+#         mediaHeaders.append(cell.value)
 
-textHeaders = []
-for row in sheet.iter_rows(min_row=1, min_col=10, max_col=11, max_row=1):
-    for cell in row:
-        textHeaders.append(cell.value)
+textHeaders = ["headline", "text"]
+# for row in sheet.iter_rows(min_row=1, min_col=10, max_col=11, max_row=1):
+#     for cell in row:
+#         textHeaders.append(cell.value)
 
 numEntries = 0
 for row in sheet.iter_cols(min_row=2, min_col=1, max_col=1):
@@ -44,10 +44,14 @@ for x in range(0, numEntries):
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, max_col=4):
         for cell in row:
             startDateData.append(cell.value)
+        for x in range(0, 3):
+            startDateData.append(None)
     endDateData = []
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, min_col=5, max_col=8):
         for cell in row:
             endDateData.append(cell.value)
+        for x in range(0, 3):
+            endDateData.append(None)
     mediaData = []
     for row in sheet.iter_rows(min_row=x+2, max_row=x+2, min_col=12, max_col=15):
         for cell in row:
@@ -72,7 +76,10 @@ for x in range(0, numEntries):
     mediaTempObj = {}
     for x in range(0, mediaData.__len__()):
         if mediaData[x] is not None:
-            mediaTempObj[mediaHeaders[x]] = mediaData[x]
+            if(mediaHeaders[x] == "thumb"):
+                mediaTempObj[mediaHeaders[x]] = "img/" + mediaData[x]
+            else:
+                mediaTempObj[mediaHeaders[x]] = mediaData[x]
         else:
             mediaTempObj[mediaHeaders[x]] = ""
     textTempObj = {}
