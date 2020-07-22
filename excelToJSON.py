@@ -80,13 +80,14 @@ for x in range(0, numEntries):
     mediaTempObj = {}
     for z in range(0, mediaData.__len__()):
         if mediaData[z] is not None:
-            if mediaHeaders[z] == "url":
-                mediaTempObj[mediaHeaders[z]] = "img/" + mediaData[z]
-            elif mediaHeaders[z] == "caption":
-                if mediaData[z] and mediaData[z+2] is not None:
-                    mediaTempObj[mediaHeaders[z]] = "<a href='" + mediaData[z] + "' target='_blank'>" + mediaData[z+2] + "</a>"
-            else:
-                mediaTempObj[mediaHeaders[z]] = mediaData[z]
+            if mediaData[z] != '?' and mediaData[z] != 'n/a' and mediaData[z] != '' and mediaData[z] != ' ':
+                if mediaHeaders[z] == "url":
+                    mediaTempObj[mediaHeaders[z]] = "img/" + mediaData[z]
+                elif mediaHeaders[z] == "caption":
+                    if mediaData[z+2] != '?' and mediaData[z+2] != 'n/a' and mediaData[z+2] != '' and mediaData[z+2] != ' ':
+                        mediaTempObj[mediaHeaders[z]] = "<a href='" + mediaData[z] + "' target='_blank'>" + mediaData[z+2] + "</a>"
+                else:
+                    mediaTempObj[mediaHeaders[z]] = mediaData[z]
         else:
             mediaTempObj[mediaHeaders[z]] = ""
     
