@@ -18,7 +18,7 @@ turtle3.goto(500, 0)
 turtle3.pendown()
 turtle3.goto(-500, 0)
 
-# Use the seek() function to allow the user to choose starting point and how many samples they would like to view
+# TODO: Use the seek() function to allow the user to choose starting point and how many samples they would like to view
 with open('binary_stuff/n1201.dat', 'rb') as file:
     # data = bytes(file.read(16))
     # data = int.from_bytes(file.read(), "little")
