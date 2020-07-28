@@ -66,14 +66,14 @@ for x in range(0, numEntries):
     startDateTempObj = {}
     for z in range(0, startDateData.__len__()):
         if startDateData[z] is not None:
-            startDateTempObj[startDateHeaders[z]] = startDateData[z]
+            startDateTempObj[startDateHeaders[z]] = str(startDateData[z])
         else:
             startDateTempObj[startDateHeaders[z]] = ""
     z=0
     endDateTempObj = {}
     for z in range(0, endDateData.__len__()):
         if endDateData[z] is not None:
-            endDateTempObj[endDateHeaders[z]] = endDateData[z]
+            endDateTempObj[endDateHeaders[z]] = str(endDateData[z])
         else:
             endDateTempObj[endDateHeaders[z]] = ""
     z=0
@@ -99,16 +99,30 @@ for x in range(0, numEntries):
             textTempObj[textHeaders[z]] = ""
     z=0
 
-    tempObj = {
-        "start_date": startDateTempObj,
-        "end_date": endDateTempObj,
-        "media": mediaTempObj,
-        "text": textTempObj
-    }
+    # A check to make sure that there actually is data for the end date
+    blank = True
+    for z in range(0, endDateData.__len__()):
+        if endDateData[z] != None:
+            blank = False
+            break
+    if blank:
+        tempObj = {
+            "start_date": startDateTempObj,
+            "media": mediaTempObj,
+            "text": textTempObj
+        }
+    else:
+        tempObj = {
+            "start_date": startDateTempObj,
+            "end_date": endDateTempObj,
+            "media": mediaTempObj,
+            "text": textTempObj
+        }
+
     finalObj["events"].append(tempObj)
 
 jsonObj = json.dumps(finalObj, indent=4)
-with open('new_result.json', 'w') as f:
+with open('refined_result.json', 'w') as f:
     f.write(jsonObj)
 print("JSON file saved.")
 
