@@ -7,7 +7,7 @@ finalObj = {
 
 # Loading the headers
 # TODO: There's gotta be some way to optimize this, right?
-wb = load_workbook(filename = 'openpyxl_stuff/new2.xlsx')
+wb = load_workbook(filename = 'openpyxl_stuff/last_one_please.xlsx')
 sheet = wb['Sheet1']
 
 startDateHeaders = ["year", "month", "day", "hour", "minute", "second", "millisecond", "format"]
@@ -122,7 +122,7 @@ for x in range(0, numEntries):
     finalObj["events"].append(tempObj)
 
 jsonObj = json.dumps(finalObj, indent=4)
-with open('result_2.json', 'w') as f:
+with open('result_3.json', 'w') as f:
     f.write(jsonObj)
 print("JSON file saved.")
 
