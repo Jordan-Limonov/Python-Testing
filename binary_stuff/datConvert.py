@@ -48,12 +48,12 @@ with open('binary_stuff/n1201.dat', 'rb') as file:
     turtle.goto(-500, 150)
     turtle2.penup()
     turtle2.goto(-500, -150)
-    for x in range(0, ch1.__len__()):
+    for x in range(0, ch1.__len__(),4):
         turtle.goto(turtle.xcor()+1, (ch1[x]/10)+150)
         turtle.pendown()
         turtle2.goto(turtle2.xcor()+1, (ch2[x]/10)-150)
         turtle2.pendown()
-        if x % 1000 == 0:
+        if x % 4000 == 0:
             turtle.clear()
             turtle2.clear()
             turtle.color('green')
